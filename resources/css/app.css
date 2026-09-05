@@ -1,0 +1,102 @@
+/* resources/css/app.css */
+@import 'tailwindcss';
+
+/* Dark mode variant */
+@variant dark (&:where(.dark, .dark *));
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Dark mode transition */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #6366F1, #06B6D4);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #4f52c9, #0891b2);
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 2px solid #6366F1;
+    outline-offset: 2px;
+}
+
+.dark :focus-visible {
+    outline-color: #06B6D4;
+}
+
+/* Selection color */
+::selection {
+    background: #6366F1;
+    color: white;
+}
+
+.dark ::selection {
+    background: #06B6D4;
+    color: #111827;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.slide-in-left {
+    transform: translateX(-30px);
+}
+
+.slide-in-right {
+    transform: translateX(30px);
+}
+
+.slide-in-left.translate-x-0,
+.slide-in-right.translate-x-0 {
+    transform: translateX(0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
